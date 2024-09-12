@@ -1,6 +1,9 @@
 # 베이스 이미지
 FROM ubuntu:22.04
 
+# Xserver
+ENV DISPLAY host.docker.internal:0.0
+
 # 필요 종속성 설치
 RUN apt-get update && apt-get install -y wget x11vnc xvfb
 
@@ -19,6 +22,3 @@ ENV PATH=${JAVA_HOME}/bin:${PATH}
 
 WORKDIR /workspace
 COPY .. /workspace/app
-
-# Xserver
-ENV DISPLAY host.docker.internal:0.0
